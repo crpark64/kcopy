@@ -24,6 +24,13 @@ int wmain( int argc, wchar_t *argv[ ], wchar_t *envp[ ] )
 		wprintf(L"Invalid arg, arg count: %d. arg count must be 3. \r\n", argc);
 		return -1;
 	}
+
+
+	// TotalCommander 에서 Parameter 에 다음과 같이 작성
+	// "%x%P\" "%x%T\"
+	// 가장 뒤에 \ 를 넣는 이유는, Total Commander 에서 %x%P 사용시 가장 뒤에 \ 가 기본적으로 붙어서 제공 됨
+	// 윈도우 Cmd 에서 \가 이미 있으면, "%x%P" 로 하면 "c:\" 로 되기 때문에 \ 에 의해 Escape 문자로 인식 됨
+	// \\ 가 되도록 "%x%P\" 로 처리하여 "c:\\" 로 하여 Escape 방지 
 	if ( FALSE == ArgParse( src, dst ) )
 	{
 		wprintf( L"Invalid arg, parse failed. \r\n");
