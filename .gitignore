@@ -1,0 +1,9 @@
+*.tlog
+*.pdb
+*.ipdb
+*.idb
+*.ilk
+*.obj
+*.iobj
+*.log
+/KCopy/KCopy.vcxproj.user
