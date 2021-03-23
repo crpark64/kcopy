@@ -64,19 +64,19 @@ int wmain( int argc, wchar_t *argv[ ], wchar_t *envp[ ] )
 	size_t siCount = arr.GetCount();
 	for ( size_t i = 0; i < siCount; i++ )
 	{
-		CString strTemp = arr.GetAt(i);
-		strTemp.Replace(_T("/"), _T("\\"));
+		CString strUri = arr.GetAt(i);
+		strUri.Replace(_T("/"), _T("\\"));
 
-		//MessageBox(NULL, strTemp, 0, 0);
-		
-		if ( TRUE == PathFileExists( strTemp ) )
+
+		// 폴더 경로 생성
+		CString srcFile; srcFile.Format(L"%s%s", src, strUri);
+		CString dstFile; dstFile.Format(L"%s%s", dst, strUri);
+
+
+		if ( FALSE == PathFileExists( srcFile ) )
 		{
 			continue;
 		}
-
-		// 폴더 경로 생성
-		CString srcFile; srcFile.Format(L"%s%s", src, strTemp);
-		CString dstFile; dstFile.Format(L"%s%s", dst, strTemp);
 
 
 		// 대상 폴더 생성 (Recursive)
