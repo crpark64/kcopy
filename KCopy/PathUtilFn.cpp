@@ -75,7 +75,7 @@ BOOL ArgParse( CString& src, CString& dst )
 	{
 		for ( i = 0; i < nArgs; i++ )
 		{
-			printf( "%d: %ws\n", i, szArglist[i] );
+			printf( "Arg-%d: %ws\n", i, szArglist[i] );
 			str = szArglist[i];
 			str.Trim();
 			if ( 0 < str.GetLength() )

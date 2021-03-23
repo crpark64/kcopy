@@ -49,6 +49,13 @@ int wmain( int argc, wchar_t *argv[ ], wchar_t *envp[ ] )
 		return -1;
 	}
 
+
+	wprintf( L"\r\n" );
+	wprintf( L"Src path. (%s)\r\n", src );
+	wprintf( L"Dst path. (%s)\r\n", dst );
+	wprintf( L"\r\n" );
+
+
 	// Path 에 \\ 붙임
 	if ( L"\\" != src.Right( 1 ) )
 	{
@@ -72,11 +79,15 @@ int wmain( int argc, wchar_t *argv[ ], wchar_t *envp[ ] )
 		CString srcFile; srcFile.Format(L"%s%s", src, strUri);
 		CString dstFile; dstFile.Format(L"%s%s", dst, strUri);
 
+		
 
 		if ( FALSE == PathFileExists( srcFile ) )
 		{
+			wprintf( L"(%d/%d) Skipped: %s \r\n", (i+1), siCount, srcFile );
 			continue;
 		}
+
+		wprintf( L"(%d/%d) File: %s \r\n", (i+1), siCount, srcFile );
 
 
 		// 대상 폴더 생성 (Recursive)
@@ -88,6 +99,12 @@ int wmain( int argc, wchar_t *argv[ ], wchar_t *envp[ ] )
 		CopyFile(srcFile, dstFile, FALSE);
 		// 원본 삭제
 		DeleteFile(srcFile);
+
 	}
+
+#ifndef _DEBUG
+	wprintf(L"Press any key to continue...");
+	getchar();
+#endif
 }
 
