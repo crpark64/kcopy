@@ -148,9 +148,11 @@
   <ItemGroup>
     <ClCompile Include="KCopy.cpp" />
     <ClCompile Include="PathUtilFn.cpp" />
+    <ClCompile Include="StringUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PathUtilFn.h" />
+    <ClInclude Include="StringUtil.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

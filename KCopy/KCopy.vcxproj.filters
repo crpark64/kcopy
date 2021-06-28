@@ -21,9 +21,15 @@
     <ClCompile Include="PathUtilFn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StringUtil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PathUtilFn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StringUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
