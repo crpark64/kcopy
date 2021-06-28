@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <conio.h>
 #include "PathUtilFn.h"
 
 
@@ -104,7 +105,7 @@ int wmain( int argc, wchar_t *argv[ ], wchar_t *envp[ ] )
 
 #ifndef _DEBUG
 	wprintf(L"Press any key to continue...");
-	getchar();
+	_getch();
 #endif
 }
 
