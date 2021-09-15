@@ -282,5 +282,7 @@ void CStringUtil::OutputDebugStringW( LPCWSTR format, ... )
 	va_end( lpStart );
 
 	::OutputDebugStringW(szBuf);
-	wprintf(szBuf);
+    //CStringW strBuf = szBuf;
+    //strBuf.Replace(L"%", L"%%"); // wprintf 할 때, 문자열에 % 가 포함되면, 뒤의 Arg 참조 시도하다가 crash 발생
+    //wprintf(strBuf);
 }
