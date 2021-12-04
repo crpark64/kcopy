@@ -14,12 +14,12 @@ int wmain( int argc, wchar_t *argv[ ], wchar_t *envp[ ] )
     CAtlArray<CString> arr;
 
 
-    // í´ë¦½ë³´ë“œì—ì„œ ê°€ì ¸ì˜´
+    // Å¬¸³º¸µå¿¡¼­ °¡Á®¿È
     str = GetClipboardText();
     MakePathArray(str, arr);
 
 
-    // 2ê°œì˜ ì ˆëŒ€ ê²½ë¡œ ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ìŒ
+    // 2°³ÀÇ Àı´ë °æ·Î ¸Å°³º¯¼ö·Î ¹ŞÀ½
     CString src, dst;
     if ( 3 != argc )
     {
@@ -28,18 +28,18 @@ int wmain( int argc, wchar_t *argv[ ], wchar_t *envp[ ] )
     }
 
 
-    // TotalCommander ì—ì„œ Parameter ì— ë‹¤ìŒê³¼ ê°™ì´ ì‘ì„±
+    // TotalCommander ¿¡¼­ Parameter ¿¡ ´ÙÀ½°ú °°ÀÌ ÀÛ¼º
     // "%x%P\" "%x%T\"
-    // ê°€ì¥ ë’¤ì— \ ë¥¼ ë„£ëŠ” ì´ìœ ëŠ”, Total Commander ì—ì„œ %x%P ì‚¬ìš©ì‹œ ê°€ì¥ ë’¤ì— \ ê°€ ê¸°ë³¸ì ìœ¼ë¡œ ë¶™ì–´ì„œ ì œê³µ ë¨
-    // ìœˆë„ìš° Cmd ì—ì„œ \ê°€ ì´ë¯¸ ìˆìœ¼ë©´, "%x%P" ë¡œ í•˜ë©´ "c:\" ë¡œ ë˜ê¸° ë•Œë¬¸ì— \ ì— ì˜í•´ Escape ë¬¸ìë¡œ ì¸ì‹ ë¨
-    // \\ ê°€ ë˜ë„ë¡ "%x%P\" ë¡œ ì²˜ë¦¬í•˜ì—¬ "c:\\" ë¡œ í•˜ì—¬ Escape ë°©ì§€ 
+    // °¡Àå µÚ¿¡ \ ¸¦ ³Ö´Â ÀÌÀ¯´Â, Total Commander ¿¡¼­ %x%P »ç¿ë½Ã °¡Àå µÚ¿¡ \ °¡ ±âº»ÀûÀ¸·Î ºÙ¾î¼­ Á¦°ø µÊ
+    // À©µµ¿ì Cmd ¿¡¼­ \°¡ ÀÌ¹Ì ÀÖÀ¸¸é, "%x%P" ·Î ÇÏ¸é "c:\" ·Î µÇ±â ¶§¹®¿¡ \ ¿¡ ÀÇÇØ Escape ¹®ÀÚ·Î ÀÎ½Ä µÊ
+    // \\ °¡ µÇµµ·Ï "%x%P\" ·Î Ã³¸®ÇÏ¿© "c:\\" ·Î ÇÏ¿© Escape ¹æÁö 
     if ( FALSE == ArgParse( src, dst ) )
     {
         CStringUtil::OutputDebugStringW( L"Invalid arg, parse failed. \r\n");
         return -1;
     }
 
-    // 2ê°œì˜ ê²½ë¡œê°€ ì¡´ì¬í•˜ëŠ”ì§€ í™•ì¸
+    // 2°³ÀÇ °æ·Î°¡ Á¸ÀçÇÏ´ÂÁö È®ÀÎ
     if ( FALSE == PathFileExists( src ) )
     {
         CStringUtil::OutputDebugStringW( L"Src path not found. (%s)\r\n", src);
@@ -58,7 +58,7 @@ int wmain( int argc, wchar_t *argv[ ], wchar_t *envp[ ] )
     CStringUtil::OutputDebugStringW( L"\r\n" );
 
 
-    // Path ì— \\ ë¶™ì„
+    // Path ¿¡ \\ ºÙÀÓ
     if ( L"\\" != src.Right( 1 ) )
     {
         src +=  L"\\";
@@ -69,7 +69,7 @@ int wmain( int argc, wchar_t *argv[ ], wchar_t *envp[ ] )
     }
 
 
-    // í´ë¦½ë³´ë“œ ë‚´ìš©ë§Œí¼ Loop ì§„í–‰
+    // Å¬¸³º¸µå ³»¿ë¸¸Å­ Loop ÁøÇà
     size_t siCount = arr.GetCount();
     for ( size_t i = 0; i < siCount; i++ )
     {
@@ -77,7 +77,7 @@ int wmain( int argc, wchar_t *argv[ ], wchar_t *envp[ ] )
         strUri.Replace(_T("/"), _T("\\"));
 
 
-        // í´ë” ê²½ë¡œ ìƒì„±
+        // Æú´õ °æ·Î »ı¼º
         CString srcFile; srcFile.Format(L"%s%s", src, strUri);
         CString dstFile; dstFile.Format(L"%s%s", dst, strUri);
 
@@ -92,14 +92,14 @@ int wmain( int argc, wchar_t *argv[ ], wchar_t *envp[ ] )
         CStringUtil::OutputDebugStringW( L"(%d/%d) File: %s \r\n", (i+1), siCount, srcFile );
 
 
-        // ëŒ€ìƒ í´ë” ìƒì„± (Recursive)
+        // ´ë»ó Æú´õ »ı¼º (Recursive)
         CString dstPathOnly = dstFile;
         dstPathOnly.Truncate( dstPathOnly.ReverseFind( '\\' ) );
         CreateDirectoryRecursively(dstPathOnly);
         
-        // íŒŒì¼ ë³µì‚¬
+        // ÆÄÀÏ º¹»ç
         CopyFile(srcFile, dstFile, FALSE);
-        // ì›ë³¸ ì‚­ì œ
+        // ¿øº» »èÁ¦
         DeleteFile(srcFile);
 
     }

@@ -277,7 +277,12 @@ void CStringUtil::OutputDebugStringW( LPCWSTR format, ... )
 	va_list lpStart;
 	va_start( lpStart, format );
 
-	vswprintf_s( szBuf, RTL_NUMBER_OF(szBuf), format, lpStart );
+	//vswprintf_s( szBuf, RTL_NUMBER_OF(szBuf), format, lpStart );
+	HRESULT hr = StringCchVPrintf(szBuf, ARRAYSIZE(szBuf), format, lpStart);
+    if (SUCCEEDED(hr))
+    {
+        
+    }
 
 	va_end( lpStart );
 
