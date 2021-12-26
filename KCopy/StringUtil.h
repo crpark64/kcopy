@@ -29,6 +29,8 @@ public:
 	static BOOL CommandLineExcludeFirstArg(/* OUT */ CString& excludedFirstArgCommandLine);
 	static void OutputDebugStringW(LPCWSTR format, ...);
 
+    static BOOL SetClipboardText(LPCWSTR lpszText);
+
 private:
 };
 
