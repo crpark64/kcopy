@@ -8,6 +8,7 @@
 
 #include <windows.h>
 #include <stdarg.h>
+#include <shellapi.h>
 
 #pragma warning(disable : 4996)
 #pragma warning(disable : 4267)
@@ -295,7 +296,6 @@ void CStringUtil::OutputDebugStringW(LPCWSTR format, ...)
 BOOL CStringUtil::SetClipboardText(LPCWSTR lpszText)
 {
     HGLOBAL hMem = NULL;
-    BOOL bLocked = FALSE;
 
     if (NULL == lpszText)
     {
