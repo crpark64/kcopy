@@ -31,6 +31,8 @@ public:
 
     static BOOL SetClipboardText(LPCWSTR lpszText);
 
+    static int FindNoCase(CAtlString src, CAtlString dst);
+
 private:
 };
 

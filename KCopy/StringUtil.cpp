@@ -328,3 +328,11 @@ BOOL CStringUtil::SetClipboardText(LPCWSTR lpszText)
 
     return TRUE;
 }
+
+int CStringUtil::FindNoCase(CAtlString src, CAtlString dst)
+{
+    src.MakeLower();
+    dst.MakeLower();
+
+    return src.Find(dst);
+}
